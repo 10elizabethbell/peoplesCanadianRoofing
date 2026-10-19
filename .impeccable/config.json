@@ -14,6 +14,84 @@
         "value": "<section> \"how\": children flush against bg on bottom (no inset)",
         "createdAt": "2026-10-19T21:56:29.937Z",
         "reason": "Claude: the eavestrough is designed to sit exactly on the section boundary and drip into the next section"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(255, 255, 255)",
+        "createdAt": "2026-10-19T22:08:35.200Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(215, 163, 7)",
+        "createdAt": "2026-10-19T22:08:35.268Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(70,98,148,.35)",
+        "createdAt": "2026-10-19T22:08:35.338Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(54,78,122,.28)",
+        "createdAt": "2026-10-19T22:08:35.411Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#6a7387",
+        "createdAt": "2026-10-19T22:08:35.480Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "13px",
+        "createdAt": "2026-10-19T22:08:35.550Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "14px",
+        "createdAt": "2026-10-19T22:08:35.619Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "18px",
+        "createdAt": "2026-10-19T22:08:35.688Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "52px",
+        "createdAt": "2026-10-19T22:08:35.761Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "22px",
+        "createdAt": "2026-10-19T22:08:35.829Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "19px",
+        "createdAt": "2026-10-19T22:08:35.900Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "clamp(40px,12vw,88px)",
+        "createdAt": "2026-10-19T22:08:35.974Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "2px",
+        "createdAt": "2026-10-19T22:08:36.045Z",
+        "reason": "Claude: shipped one-off in the finished build; DESIGN.md (documenter, 2026-10-19) deliberately left single-use values out of the token set (wordmark gold bars)"
       }
     ]
   }
