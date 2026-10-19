@@ -47,3 +47,8 @@
 - Real-device touch on iPhone/Android and inside Facebook's in-app browser (tested with Playwright Chromium + WebKit touch emulation at 360/390/430 and desktop 1440).
 - The real SMS handoff on iOS and Android (the `sms:` link and decoded message body were checked in the browser, not on a phone).
 - Frame rate on older phones.
+
+## Review trail
+- Impeccable: every mode except `live` and `onboard` (critique, audit, harden, adapt, optimize, clarify, polish, layout, typeset, colorize, bolder, quieter, distill, animate, delight, overdrive) ran as two parallel review passes; fixes applied. Then the finish reviewer: round 1 "fix" (8 items), round 2 scored 6 resolved, sky partial, plus one phone-order regression; both addressed, and I stopped at the two-round budget, so the last sky/form change hasn't had a third review.
+- Impeccable's concept roll (seed f5fdb490) assigned my 7th-ranked world (storm-radar sweep); the pitch-site rule picks the world that best carries brand + touch, so I built #1 instead.
+- Detector: two cramped-padding findings suppressed as intentional (service-list top rule; the gutter sitting on the How-it-works boundary). One tight-leading (1.27) finding on a heading left standing.
