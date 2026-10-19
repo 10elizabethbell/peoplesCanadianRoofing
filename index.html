@@ -111,7 +111,11 @@ ul,ol{margin:0;padding:0;list-style:none}
 .step .n{grid-row:span 2;font-size:52px;font-weight:900;line-height:.9;color:var(--gold);font-variant-numeric:tabular-nums}
 .step h3{font-size:22px;line-height:1.15;margin-bottom:6px;padding-top:4px}
 .step p{color:var(--cream-2);max-width:42ch}
-.area{margin-bottom:32px}
+.estimate .wrap{display:flex;flex-direction:column}
+.est-side{display:contents}
+.estimate h2{order:1}
+form{order:2}
+.area{order:3;margin-top:44px}
 .area .big{font-size:clamp(20px,5.4vw,26px);font-weight:800;line-height:1.25;max-width:24ch}
 .towns{margin-top:10px;color:var(--ink-2);font-size:16px;line-height:1.7;max-width:46ch}
 
@@ -187,6 +191,7 @@ footer a{color:var(--cream);font-weight:700;display:inline-flex;align-items:cent
   .services h2{grid-column:1/-1;margin-bottom:6px}
   .care{margin-top:0}
   .estimate .wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+  .est-side{display:block}
   .area{margin-top:36px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -601,13 +606,14 @@ var Leaves = (function(){
   // storm sky: soft cloud masses drifting with the wind (drawn at half size, they're soft anyway), last light behind the ridge
   function makeSky(){
     var k = 0.5, cw = Math.ceil(W * 2 * k), ch = Math.ceil(roofTop * k), c = document.createElement('canvas'); c.width = cw; c.height = Math.max(1, ch);
-    var x = c.getContext('2d'), r = rng(23), n = Math.round(W / 26);
+    var x = c.getContext('2d'), r = rng(23), n = Math.round(W / 18);
     for (var i = 0; i < n; i++) {
       var bx = r() * cw, by = ch * (0.08 + r() * 0.85), rx = (40 + r() * 120) * k * (isPhone() ? 0.8 : 1.2), ry = rx * (0.35 + r() * 0.25);
-      var light = r() < 0.55, a = light ? 0.10 + r() * 0.12 : 0.18 + r() * 0.2;
+      var light = r() < 0.5, a = light ? 0.2 + r() * 0.18 : 0.3 + r() * 0.22;
       for (var o = -cw; o <= cw; o += cw) {
         var g = x.createRadialGradient(bx + o, by, 0, bx + o, by, rx);
-        g.addColorStop(0, light ? 'rgba(92,118,165,' + a + ')' : 'rgba(6,13,30,' + a + ')'); g.addColorStop(1, 'rgba(0,0,0,0)');
+        var warm = light && by > ch * 0.6;
+        g.addColorStop(0, warm ? 'rgba(150,128,140,' + a + ')' : light ? 'rgba(100,126,176,' + a + ')' : 'rgba(5,11,26,' + a + ')'); g.addColorStop(1, 'rgba(0,0,0,0)');
         x.fillStyle = g; x.save(); x.translate(bx + o, by); x.scale(1, ry / rx); x.translate(-(bx + o), -by);
         x.beginPath(); x.arc(bx + o, by, rx, 0, 6.3); x.fill(); x.restore();
       }
@@ -618,9 +624,9 @@ var Leaves = (function(){
     if (!sky) return;
     var off = (s * 7) % sky.w;
     ctx.drawImage(sky.c, -off, 0, sky.w, sky.h); ctx.drawImage(sky.c, sky.w - off, 0, sky.w, sky.h);
-    var g = ctx.createLinearGradient(0, roofTop - 110, 0, roofTop);
-    g.addColorStop(0, 'rgba(150,140,160,0)'); g.addColorStop(1, 'rgba(196,166,150,.22)');
-    ctx.fillStyle = g; ctx.fillRect(0, roofTop - 110, W, 110);
+    var band = Math.min(170, roofTop * 0.35), g = ctx.createLinearGradient(0, roofTop - band, 0, roofTop);
+    g.addColorStop(0, 'rgba(160,110,100,0)'); g.addColorStop(0.6, 'rgba(190,120,95,.18)'); g.addColorStop(1, 'rgba(232,150,96,.42)');
+    ctx.fillStyle = g; ctx.fillRect(0, roofTop - band, W, band);
   }
   function blit(src, t, dy, alpha){
     var sx = Math.max(0, t.x), ex = Math.min(W, t.x + t.w); if (ex <= sx) return;
