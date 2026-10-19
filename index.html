@@ -51,7 +51,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .btn svg{flex:none}
 
 /* ---------- hero ---------- */
-.hero{position:relative;min-height:min(100vh,1040px);min-height:min(100svh,1040px);display:flex;flex-direction:column;color:var(--cream);
+.hero{position:relative;display:flex;flex-direction:column;color:var(--cream);
   background:
     radial-gradient(120% 60% at 80% 8%,rgba(70,98,148,.35),transparent 60%),
     radial-gradient(90% 40% at 10% 30%,rgba(54,78,122,.28),transparent 70%),
@@ -71,12 +71,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hero h1 em{font-style:normal;color:var(--gold)}
 .promise{margin:16px 0 24px;font-size:clamp(17px,4.6vw,20px);line-height:1.45;color:var(--cream-2);max-width:34ch;text-wrap:pretty}
 .actions{display:grid;gap:12px}
-.hint{position:relative;z-index:1;display:flex;align-items:center;gap:8px;padding:18px var(--gutter) 10px;font-size:14px;font-weight:600;color:var(--cream-2);transition:opacity .6s}
+.hint{position:relative;z-index:1;text-wrap:balance;display:flex;align-items:center;gap:8px;padding:18px var(--gutter) 10px;font-size:14px;font-weight:600;color:var(--cream-2);transition:opacity .6s}
 .hint.gone{opacity:0}
 .hint svg{color:var(--gold);flex:none}
 .hint .coarse{display:none}
-@media (pointer:coarse){.hint .fine{display:none}.hint .coarse{display:inline}}
-.roof{position:relative;z-index:1;flex:1 0 190px;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;background:linear-gradient(180deg,transparent 0,transparent 10px,rgba(70,66,60,.55) 10px)}
+@media (hover:none){.hint .fine{display:none}.hint .coarse{display:inline}}
+.hint-text{display:inline-flex;align-items:center;gap:8px}
+.roof{position:relative;z-index:1;flex:0 0 clamp(190px,32svh,280px);touch-action:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;background:linear-gradient(180deg,transparent 0,transparent 10px,rgba(70,66,60,.55) 10px)}
 .roof.ready{background:none}
 
 /* ---------- eaves: gutter + drips between sections ---------- */
@@ -115,9 +116,9 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* ---------- estimate form (paper) ---------- */
 .estimate{padding:96px 0 80px;background:var(--paper)}
-.estimate .wrap{max-width:720px}
-.estimate h2{margin-bottom:12px}
-.lead{color:var(--ink-2);margin-bottom:28px;max-width:44ch}
+.estimate h2{margin-bottom:28px}
+form{max-width:640px}
+.after a{display:inline-flex;align-items:center;min-height:44px}
 form{display:grid;gap:20px}
 .field{display:grid;gap:7px}
 .field label,.legend{font-weight:800;font-size:16px}
@@ -142,7 +143,6 @@ fieldset{border:0;margin:0;padding:0;display:grid;gap:9px}
 .send .btn-primary:hover,.send .btn-primary:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 .note{font-size:15px;color:var(--ink-2)}
 .after{font-size:16px;font-weight:700}
-.after[hidden]{display:none}
 
 /* ---------- close (red) ---------- */
 .close{background:var(--red);color:#fff;padding:72px 0 76px;text-align:center}
@@ -170,7 +170,8 @@ footer a{color:var(--cream);font-weight:700;display:inline-flex;align-items:cent
   .hero-copy{padding-top:40px}
   .actions{grid-auto-flow:column;justify-content:start}
   .actions .btn{min-width:250px}
-  .roof{flex-basis:34vh}
+  .hero{min-height:min(100svh,1040px)}
+  .roof{flex:1 0 34vh}
   .steps{grid-template-columns:repeat(3,1fr);gap:36px}
   .step{grid-template-columns:1fr}
   .step .n{grid-row:auto;margin-bottom:12px}
@@ -219,7 +220,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
   <div class="hero-copy">
     <h1>Keep the weather <em>out.</em></h1>
-    <p class="promise">Locally owned in Windsor, licensed and insured. We look after your roof like our own family lives under it.</p>
+    <p class="promise">Locally owned in Windsor. We look after your roof like our own family lives under it.</p>
     <div class="actions">
       <a class="btn btn-primary" href="#estimate">Get a free estimate</a>
       <a class="btn btn-ghost" href="sms:+15199992445?&amp;body=Hi%20People%27s%20Canadian%20Roofing%21%20I%27m%20sending%20you%20a%20photo%20of%20my%20roof.%20My%20address%20is%3A%20">Text us a photo of the roof</a>
@@ -227,8 +228,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   </div>
 
   <p class="hint" aria-hidden="true">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    <span class="fine">Run your mouse across the old roof to re-shingle it</span><span class="coarse">Drag across the old roof to re-shingle it</span>
+    <span class="hint-text"><svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 3.2"><path d="M2 10c3-6 6-6 9 0s6 6 9 0"/></svg>
+    <span class="fine">Run your mouse across the old roof to re-shingle it</span><span class="coarse">Drag across the old roof to re-shingle it</span></span>
   </p>
   <div class="roof" aria-hidden="true"></div>
   <div class="eave" data-courses="0" aria-hidden="true"><canvas></canvas></div>
@@ -243,7 +244,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <li><a class="row" href="#estimate" data-need="Repair or leak">Roof repairs &amp; leak fixes<span class="arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
       </ul>
       <div class="care">
-        <p>Your roof is the only thing between your family and a Windsor winter. We treat it that way, whether it's one leak over the kitchen or the whole thing.</p>
+        <p>One leak over the kitchen or a whole new roof, it gets the same care: done properly, so the next storm is just weather.</p>
         <ul class="facts">
           <li><svg class="leaf" viewBox="0 0 100 100" aria-hidden="true"><use href="#maple" fill="#d52b1e"/></svg>Licensed &amp; insured</li>
           <li><svg class="leaf" viewBox="0 0 100 100" aria-hidden="true"><use href="#maple" fill="#d52b1e"/></svg>Free estimates</li>
@@ -272,7 +273,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <section class="estimate" id="estimate" aria-labelledby="est">
     <div class="wrap">
       <h2 id="est">Get a free estimate</h2>
-      <p class="lead">Fill this in and it comes to us as a text message.</p>
       <form id="estimate-form" novalidate>
         <div class="field">
           <label for="f-name">Your name</label>
@@ -304,7 +304,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <div class="send">
           <button class="btn btn-primary" type="submit">Text my estimate request</button>
           <p class="note">Opens your messages app with this filled in. Nothing is sent until you press send.</p>
-          <p class="after" hidden>Didn't open? Call us at <a href="tel:+15199992445">519-999-2445</a>.</p>
+          <p class="after">Prefer to talk? Call us at <a href="tel:+15199992445">519-999-2445</a>.</p>
         </div>
       </form>
     </div>
@@ -315,7 +315,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <svg class="leaf" viewBox="0 0 100 100" aria-hidden="true"><use href="#maple" fill="#fff"/></svg>
       <h2 id="close">Fix it before the next storm.</h2>
       <a class="tel-big" href="tel:+15199992445">519-999-2445</a>
-      <p>Free estimates · Licensed &amp; insured</p>
+      <p>Locally owned in Windsor, Ontario</p>
     </div>
   </section>
 </main>
@@ -336,7 +336,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 var TUNE = {
   BRUSH_PHONE: 34, BRUSH_DESKTOP: 46,   // re-shingle radius, px
   LAY_MS: 280,                          // one shingle dropping into place
-  AGE_MS: 700,                          // one shingle weathering back
+  AGE_MS: 1400,                         // one shingle weathering back
   IDLE_S: 5,                            // seconds untouched before the roofer takes over again
   ROW_S: 0.85,                          // autoplay: seconds per course
   HOLD_S: 4,                            // autoplay: admire the new roof this long before it weathers
@@ -417,7 +417,7 @@ var Shingles = (function(){
     }
     if (o.cap) {
       var cr = [], cx = -r() * 12;
-      while (cx < W) { var cw = capH * 2.2 * (0.85 + r() * 0.3); var c = tab(r, cx, top, cw, capH + 5, rows.length, 'c'); cr.push(c); tabs.push(c); cx += cw; }
+      while (cx < W) { var cw = capH * 2.2 * (0.85 + r() * 0.3); var c = tab(r, cx, top + (r() - 0.5) * 2.6, cw, capH + 5, rows.length, 'c'); cr.push(c); tabs.push(c); cx += cw; }
       rows.push(cr);
     }
     return { tabs: tabs, rows: rows };
@@ -439,10 +439,16 @@ var Shingles = (function(){
     if (!isNew && t.missing) {
       x.fillStyle = 'hsl(26 14% 16%)'; x.fillRect(x0, y, w, h);
       x.globalAlpha = 0.6; x.fillStyle = pat; x.fillRect(x0, y, w, h); x.globalAlpha = 1;
-      x.fillStyle = 'rgba(205,200,190,.8)';
-      [0.25, 0.75].forEach(function(k){ x.beginPath(); x.arc(x0 + w * k, y + h * 0.4, Math.max(1.2, h * 0.06), 0, 6.3); x.fill(); });
-      g = x.createLinearGradient(0, y, 0, y + h * 0.45); g.addColorStop(0, 'rgba(0,0,0,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-      x.fillStyle = g; x.fillRect(x0, y, w, h * 0.45);
+      x.fillStyle = 'rgba(120,118,112,.7)';
+      [0.25, 0.75].forEach(function(k){ x.beginPath(); x.arc(x0 + w * k, y + h * 0.55, Math.max(1, h * 0.04), 0, 6.3); x.fill(); });
+      // what's left of the torn shingle: a ragged strip hanging from the course above
+      x.fillStyle = 'hsl(30 7% ' + (44 + t.v * 8) + '%)';
+      x.beginPath(); x.moveTo(x0, y); x.lineTo(x0 + w, y);
+      for (var j = 8; j >= 0; j--) x.lineTo(x0 + w * j / 8, y + h * (0.12 + ((j * 7 + Math.floor(t.v * 13)) % 5) * 0.045));
+      x.closePath(); x.fill();
+      x.globalAlpha = 0.85; x.fillStyle = pat; x.fill(); x.globalAlpha = 1;
+      g = x.createLinearGradient(0, y + h * 0.2, 0, y + h * 0.5); g.addColorStop(0, 'rgba(0,0,0,.45)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+      x.fillStyle = g; x.fillRect(x0, y + h * 0.2, w, h * 0.3);
       x.restore(); return;
     }
     var L = isNew ? 24 + t.v * 7 : 45 + t.v * 9;
@@ -471,21 +477,25 @@ var Shingles = (function(){
     x.fillStyle = 'rgba(4,8,16,.62)'; x.fillRect(x0, y + h - 1.6, w, 1.6);
     x.fillStyle = 'rgba(4,8,16,.82)'; x.fillRect(x0, y, 1.5, h);
     if (!isNew && t.curl) {
-      var c = t.curl, cx = c < 0 ? x0 : x0 + w, cw = Math.min(w * 0.3, h * 1.1), ch = h * 0.5;
-      x.fillStyle = 'rgba(16,14,10,.45)';
-      x.beginPath(); x.moveTo(cx, y + h - ch); x.lineTo(cx, y + h); x.lineTo(cx - c * cw, y + h); x.closePath(); x.fill();
-      x.fillStyle = 'hsl(34 10% 60%)';
-      x.beginPath(); x.moveTo(cx, y + h - ch - 2); x.lineTo(cx + c * 1, y + h - 3); x.lineTo(cx - c * (cw - 2), y + h - 1); x.closePath(); x.fill();
+      // a corner lifting off the roof: soft shadow under it, the curled edge catching light
+      var c = t.curl, cx = c < 0 ? x0 : x0 + w, cw = Math.min(w * 0.32, h * 1.2), ch = h * 0.42, by = y + h;
+      g = x.createRadialGradient(cx, by, 1, cx, by, cw); g.addColorStop(0, 'rgba(10,9,6,.55)'); g.addColorStop(1, 'rgba(10,9,6,0)');
+      x.fillStyle = g; x.beginPath(); x.moveTo(cx, by - ch); x.quadraticCurveTo(cx - c * cw * 0.25, by - ch * 0.2, cx - c * cw, by); x.lineTo(cx, by); x.closePath(); x.fill();
+      x.fillStyle = 'hsl(34 9% 58%)';
+      x.beginPath(); x.moveTo(cx, by - ch - 1); x.quadraticCurveTo(cx - c * cw * 0.15, by - ch * 0.45, cx - c * cw * 0.95, by - 1.5);
+      x.quadraticCurveTo(cx - c * cw * 0.3, by - ch * 0.15, cx, by - ch * 0.35); x.closePath(); x.fill();
     }
     x.restore();
   }
-  function paintLayer(W, H, dpr, tabs, isNew, top, bottom){
-    var c = document.createElement('canvas'); c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
-    var x = c.getContext('2d'); x.setTransform(dpr, 0, 0, dpr, 0, 0);
+  // the layer covers y from `oy` down to H only (the roof band), to save memory on phones
+  function paintLayer(W, H, dpr, tabs, isNew, top, bottom, oy){
+    oy = oy || 0;
+    var c = document.createElement('canvas'); c.width = Math.round(W * dpr); c.height = Math.round((H - oy) * dpr);
+    var x = c.getContext('2d'); x.setTransform(dpr, 0, 0, dpr, 0, -oy * dpr);
     var pat = pattern(x);
     for (var i = 0; i < tabs.length; i++) paintTab(x, tabs[i], isNew, pat);
     var g = x.createLinearGradient(0, top, 0, bottom);
-    g.addColorStop(0, 'rgba(150,175,215,.17)'); g.addColorStop(0.5, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(4,8,18,.24)');
+    g.addColorStop(0, 'rgba(41,67,110,.34)'); g.addColorStop(0.32, 'rgba(41,67,110,0)'); g.addColorStop(0.6, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(4,8,18,.24)');
     x.fillStyle = g; x.fillRect(0, top, W, bottom - top);
     return c;
   }
@@ -531,9 +541,9 @@ var Leaves = (function(){
    ========================================================= */
 (function(){
   var hero = document.querySelector('.hero'), cv = hero.querySelector('.hero-canvas'), roofEl = hero.querySelector('.roof');
-  var copyEl = hero.querySelector('.hero-copy'), topEl = hero.querySelector('.top'), hint = hero.querySelector('.hint');
+  var copyEl = hero.querySelector('.hero-copy'), topEl = hero.querySelector('.top'), hint = hero.querySelector('.hint'), hintText = hint.querySelector('.hint-text');
   var ctx = cv.getContext('2d');
-  var W = 0, H = 0, dpr = 1, roofTop = 0, roofBottom = 0, tabs = [], rows = [], oldL, newL, comp, compX;
+  var W = 0, H = 0, dpr = 1, roofTop = 0, roofBottom = 0, OY = 0, tabs = [], rows = [], oldL, newL, comp, compX, chimney = null;
   var rain = [], splashes = [], wets = [], leaves = [], sprites = Leaves.sprites();
   var lastUser = -1e9, auto = { phase: 'lay', row: 0, x: 0, until: 0, acc: 0 }, brushR = 40, now = 0;
   var drag = { on: false, mouse: false, cx: 0, cy: 0, lx: null, ly: null };
@@ -546,9 +556,11 @@ var Leaves = (function(){
     roofTop = roofEl.offsetTop; roofBottom = roofTop + roofEl.offsetHeight;
     var L = Shingles.layout(W, roofTop, roofBottom, { exposure: isPhone() ? 30 : 40, cap: true, seed: 19 });
     tabs = L.tabs; rows = L.rows;
-    oldL = Shingles.paintLayer(W, H, dpr, tabs, false, roofTop, roofBottom);
-    newL = Shingles.paintLayer(W, H, dpr, tabs, true, roofTop, roofBottom);
-    comp = document.createElement('canvas'); comp.width = cv.width; comp.height = cv.height; compX = comp.getContext('2d');
+    OY = Math.floor(roofTop - 4);
+    oldL = Shingles.paintLayer(W, roofBottom, dpr, tabs, false, roofTop, roofBottom, OY);
+    newL = Shingles.paintLayer(W, roofBottom, dpr, tabs, true, roofTop, roofBottom, OY);
+    comp = document.createElement('canvas'); comp.width = oldL.width; comp.height = oldL.height; compX = comp.getContext('2d');
+    chimney = W >= 1024 ? makeChimney() : null;
     compX.drawImage(oldL, 0, 0);
     brushR = isPhone() ? TUNE.BRUSH_PHONE : TUNE.BRUSH_DESKTOP;
     auto = { phase: 'lay', row: 0, x: 0, until: 0, acc: 0 };
@@ -557,14 +569,37 @@ var Leaves = (function(){
     return true;
   }
 
+  // desktop: a brick chimney stands up out of the roof on the right, in the sky the words don't use
+  function makeChimney(){
+    var w = 78, above = Math.min(150, roofTop - 140), below = 34, h = above + below, x0 = Math.round(W * 0.79), y0 = roofTop - above;
+    var c = document.createElement('canvas'); c.width = Math.round((w + 60) * dpr); c.height = Math.round((h + 14) * dpr);
+    var x = c.getContext('2d'), r = rng(5); x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // shadow it throws across the shingles
+    x.fillStyle = 'rgba(4,8,16,.35)'; x.beginPath(); x.moveTo(w, above + 6); x.lineTo(w + 54, above + 20); x.lineTo(w + 54, h + 10); x.lineTo(w, h); x.closePath(); x.fill();
+    x.save(); x.beginPath(); x.rect(0, 0, w, h); x.clip();
+    for (var by = 10, k = 0; by < h - 10; by += 9, k++) for (var bx = (k % 2) ? -13 : 0; bx < w; bx += 26) {
+      x.fillStyle = 'hsl(' + (8 + r() * 10) + ' ' + (32 + r() * 14) + '% ' + (26 + r() * 10) + '%)'; x.fillRect(bx + 1, by + 1, 24, 7);
+    }
+    x.globalCompositeOperation = 'destination-over'; x.fillStyle = 'rgba(170,160,150,.75)'; x.fillRect(0, 10, w, h - 20); x.globalCompositeOperation = 'source-over';
+    var g = x.createLinearGradient(0, 0, w, 0); g.addColorStop(0, 'rgba(120,150,200,.10)'); g.addColorStop(0.6, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(4,8,16,.45)');
+    x.fillStyle = g; x.fillRect(0, 10, w, h - 20);
+    g = x.createLinearGradient(0, 0, 0, above); g.addColorStop(0, 'rgba(41,67,110,.25)'); g.addColorStop(1, 'rgba(41,67,110,0)'); x.fillStyle = g; x.fillRect(0, 10, w, above);
+    x.restore();
+    // crown on top, metal flashing where it meets the roof
+    x.fillStyle = '#9d9a94'; x.fillRect(-5, 2, w + 10, 9); x.fillStyle = 'rgba(255,255,255,.18)'; x.fillRect(-5, 2, w + 10, 2);
+    x.fillStyle = 'rgba(4,8,16,.45)'; x.fillRect(0, 11, w, 3);
+    g = x.createLinearGradient(0, h - 12, 0, h); g.addColorStop(0, '#8e949c'); g.addColorStop(1, '#5c626b'); x.fillStyle = g; x.fillRect(-4, h - 12, w + 8, 12);
+    x.fillStyle = 'rgba(4,8,16,.55)'; x.fillRect(-4, h, w + 8, 2);
+    return { c: c, x: x0, y: y0 - 2 };
+  }
   function blit(src, t, dy, alpha){
     var sx = Math.max(0, t.x), ex = Math.min(W, t.x + t.w); if (ex <= sx) return;
-    var X = sx * dpr, Y = t.y * dpr, Wd = (ex - sx) * dpr, Hd = t.h * dpr;
-    ctx.globalAlpha = alpha; ctx.drawImage(src, X, Y, Wd, Hd, X, Y + dy * dpr, Wd, Hd); ctx.globalAlpha = 1;
+    var X = sx * dpr, Y = (t.y - OY) * dpr, Wd = (ex - sx) * dpr, Hd = t.h * dpr;
+    ctx.globalAlpha = alpha; ctx.drawImage(src, X, Y, Wd, Hd, X, (t.y + dy) * dpr, Wd, Hd); ctx.globalAlpha = 1;
   }
   function bake(t){
     var sx = Math.max(0, t.x), ex = Math.min(W, t.x + t.w); if (ex <= sx) return;
-    var X = sx * dpr, Y = t.y * dpr, Wd = (ex - sx) * dpr, Hd = t.h * dpr;
+    var X = sx * dpr, Y = (t.y - OY) * dpr, Wd = (ex - sx) * dpr, Hd = t.h * dpr;
     compX.clearRect(X, Y, Wd, Hd); compX.drawImage(t.state ? newL : oldL, X, Y, Wd, Hd, X, Y, Wd, Hd);
   }
   function start(t, to, delay){ if (t.anim || t.state === to) return; t.anim = { to: to, start: now + (delay || 0) }; }
@@ -598,7 +633,7 @@ var Leaves = (function(){
   function land(d){
     var t = tabAt(d.x, d.land);
     if (t && t.state === 0 && !t.anim) { wets.push({ x: d.x, y: d.land, r: 3 + Math.random() * 6, life: 0, max: 2 + Math.random() * 1.5 }); if (Math.random() < 0.5) splash(d.x, d.land, 1); }
-    else splash(d.x, d.land, 3);
+    else splash(d.x, d.land, 1);
   }
   function splash(x, y, n){ for (var i = 0; i < n; i++) splashes.push({ x: x, y: y, vx: (Math.random() - 0.5) * 90 + TUNE.WIND * 0.4, vy: -60 - Math.random() * 110, life: 0 }); }
 
@@ -624,9 +659,10 @@ var Leaves = (function(){
 
   /* --- clear zones: nothing runs through the words --- */
   function zones(cr){
-    var a = copyEl.getBoundingClientRect(), b = topEl.getBoundingClientRect(), p = 12;
+    var a = copyEl.getBoundingClientRect(), b = topEl.getBoundingClientRect(), c = hintText.getBoundingClientRect(), p = 12;
     return [[a.left - cr.left - p, a.top - cr.top - p, a.right - cr.left + p, a.bottom - cr.top + p],
-            [b.left - cr.left, b.top - cr.top, b.right - cr.left, b.bottom - cr.top]];
+            [b.left - cr.left, b.top - cr.top, b.right - cr.left, b.bottom - cr.top],
+            [c.left - cr.left - 8, c.top - cr.top - 6, c.right - cr.left + 8, c.bottom - cr.top + 6]];
   }
   function inZone(z, x, y, pad){ pad = pad || 0; for (var i = 0; i < z.length; i++) if (x > z[i][0] - pad && x < z[i][2] + pad && y > z[i][1] - pad && y < z[i][3] + pad) return z[i]; return null; }
 
@@ -660,21 +696,23 @@ var Leaves = (function(){
     if (s - lastUser > TUNE.IDLE_S) {
       if (auto.phase === 'lay') {
         var row = rows[auto.row];
-        auto.x += (W + 40) / TUNE.ROW_S * dt;
-        if (row) { for (var i = 0; i < row.length; i++) if (row[i].x + row[i].w * 0.5 < auto.x) start(row[i], 1, 0); kick(auto.x, row.length ? row[0].y : 0, 40, 120, -100); }
+        auto.x += (W + 40) / TUNE.ROW_S * dt * (0.55 + 0.9 * (0.5 + 0.5 * Math.sin(s * 2.3 + auto.row * 1.7) * Math.sin(s * 0.9)));
+        if (row) { for (var i = 0; i < row.length; i++) if (row[i].x + row[i].w * 0.5 < auto.x) start(row[i], 1, Math.random() * 0.12); kick(auto.x, row.length ? row[0].y : 0, 40, 120, -100); }
         if (auto.x > W + 40) { auto.row++; auto.x = 0; if (auto.row >= rows.length) { auto.phase = 'hold'; auto.until = s + TUNE.HOLD_S; } }
-      } else if (auto.phase === 'hold') { if (s > auto.until) { auto.phase = 'age'; auto.acc = 0; } }
-      else {
-        auto.acc += dt; var left = 0;
-        for (var a = 0; a < tabs.length; a++) if (tabs[a].state === 1 || (tabs[a].anim && tabs[a].anim.to === 1)) left++;
-        while (auto.acc > TUNE.AGE_STEP_S && left > 0) { auto.acc -= TUNE.AGE_STEP_S; var t0 = tabs[Math.floor(Math.random() * tabs.length)]; if (t0.state === 1 && !t0.anim) { start(t0, 0, 0); left--; } }
-        if (left === 0) { auto.phase = 'lay'; auto.row = 0; auto.x = 0; }
+      } else if (auto.phase === 'hold') {
+        if (s > auto.until) { auto.phase = 'age'; auto.acc = 0;
+          // weather comes in with the wind: left to right, ridge first, ragged
+          auto.queue = tabs.filter(function(t){ return t.state === 1; }).sort(function(a, b){ return (a.x + a.y * 0.6 + a.v * 80) - (b.x + b.y * 0.6 + b.v * 80); }); }
+      } else {
+        auto.acc += dt;
+        while (auto.acc > TUNE.AGE_STEP_S && auto.queue.length) { auto.acc -= TUNE.AGE_STEP_S; var t0 = auto.queue.shift(); if (t0.state === 1 && !t0.anim) start(t0, 0, 0); }
+        if (!auto.queue.length && !tabs.some(function(t){ return t.anim; })) { auto.phase = 'lay'; auto.row = 0; auto.x = 0; }
       }
     }
 
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
-    var rt = Math.floor(roofTop * dpr);
-    ctx.drawImage(comp, 0, rt, cv.width, cv.height - rt, 0, rt, cv.width, cv.height - rt);
+    ctx.drawImage(comp, 0, Math.round(OY * dpr));
+    if (chimney) ctx.drawImage(chimney.c, Math.round(chimney.x * dpr), Math.round(chimney.y * dpr));
 
     // shingles in motion: new ones drop and settle, old ones weather in
     for (var n = 0; n < tabs.length; n++) { var tb = tabs[n]; if (!tb.anim) continue;
@@ -717,12 +755,13 @@ var Leaves = (function(){
     for (var ri = 0; ri < rain.length; ri++) { var dr = rain[ri];
       dr.y += dr.vy * dt; dr.x += dr.vy * slant * dt * 0.25;
       if (dr.y >= dr.land) { if (dr.land < H) land(dr); newDrop(dr, false); continue; }
-      var al = inZone(Z, dr.x, dr.y) ? 0.05 : (dr.y > roofTop ? 0.5 : 0.32);
+      if (inZone(Z, dr.x, dr.y) || inZone(Z, dr.x, dr.y - dr.len)) continue;
+      var al = dr.y > roofTop ? 0.5 : 0.32;
       ctx.strokeStyle = 'rgba(205,220,242,' + al + ')';
       ctx.beginPath(); ctx.moveTo(dr.x, dr.y); ctx.lineTo(dr.x - dr.len * slant * 0.25, dr.y - dr.len); ctx.stroke();
     }
-    ctx.fillStyle = 'rgba(225,235,250,.75)';
-    for (var si = splashes.length - 1; si >= 0; si--) { var sp = splashes[si]; sp.life += dt; if (sp.life > 0.35) { splashes.splice(si, 1); continue; }
+    ctx.fillStyle = 'rgba(225,235,250,.45)';
+    for (var si = splashes.length - 1; si >= 0; si--) { var sp = splashes[si]; sp.life += dt; if (sp.life > 0.22) { splashes.splice(si, 1); continue; }
       sp.vy += 900 * dt; sp.x += sp.vx * dt; sp.y += sp.vy * dt; ctx.fillRect(sp.x, sp.y, 1.6, 1.6); }
 
     for (var r2 = 0; r2 < leaves.length; r2++) if (!leaves[r2].rest) drawLeaf(leaves[r2], s, false);
@@ -739,17 +778,21 @@ var Leaves = (function(){
   function still(){
     // reduced motion: a finished new roof with a few leaves on it, drawn once
     for (var i = 0; i < tabs.length; i++) tabs[i].state = 1;
-    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(newL, 0, 0);
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(newL, 0, Math.round(OY * dpr));
+    if (chimney) ctx.drawImage(chimney.c, Math.round(chimney.x * dpr), Math.round(chimney.y * dpr));
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     leaves.forEach(function(l){ l.y = l.landY; drawLeaf(l, 0, true); });
     hint.classList.add('gone');
   }
 
-  build();
-  if (REDUCED) { still(); new ResizeObserver(function(){ if (build()) still(); }).observe(hero); return; }
-  lastUser = -TUNE.IDLE_S + 1.2;
-  new ResizeObserver(function(){ build(); }).observe(hero);
-  Loop.add(api, hero);
+  // paint after the page is up, so the buttons answer first
+  setTimeout(function(){
+    build();
+    if (REDUCED) { still(); new ResizeObserver(function(){ if (build()) still(); }).observe(hero); return; }
+    lastUser = -TUNE.IDLE_S + 1.2;
+    new ResizeObserver(function(){ build(); }).observe(hero);
+    Loop.add(api, hero);
+  }, 0);
 })();
 
 /* =========================================================
@@ -777,9 +820,8 @@ document.querySelectorAll('.eave').forEach(function(el, idx){
     return true;
   }
   function drop(x, y, r, stretch){
-    ctx.fillStyle = 'hsla(212,48%,52%,.85)';
-    ctx.beginPath(); ctx.ellipse(x, y, r, r * stretch, 0, 0, 6.3); ctx.fill();
-    ctx.fillStyle = 'rgba(255,255,255,.75)'; ctx.beginPath(); ctx.arc(x - r * 0.35, y - r * 0.35 * stretch, Math.max(0.6, r * 0.28), 0, 6.3); ctx.fill();
+    ctx.fillStyle = 'rgba(175,198,228,.6)'; ctx.strokeStyle = 'rgba(19,37,74,.35)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(x, y, r, r * stretch, 0, 0, 6.3); ctx.fill(); ctx.stroke();
   }
   function draw(dt){
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(base, 0, 0);
@@ -787,9 +829,9 @@ document.querySelectorAll('.eave').forEach(function(el, idx){
     for (var i = 0; i < sites.length; i++) { var s = sites[i];
       if (s.fall) { s.vy += 1500 * dt; s.y += s.vy * dt; if (s.y >= s.splashY) { rings.push({ x: s.x, y: s.splashY, life: 0 }); s.fall = false; s.r = 0; s.wait = 0.3 + Math.random() * 2.4; } else drop(s.x, s.y, s.r * 0.8, 1.7); }
       if (!s.fall) {
-        if (s.wait > 0) s.wait -= dt; else s.r = Math.min(3.4, s.r + s.grow * dt);
-        if (s.r > 0.4) { ctx.fillStyle = 'hsla(212,48%,52%,.85)'; ctx.fillRect(s.x - 0.8, gb - 1, 1.6, s.r * 0.6 + 1); drop(s.x, gb + s.r * 1.05, s.r, 1.1); }
-        if (s.r >= 3.4) { s.fall = true; s.y = gb + s.r; s.vy = 30; }
+        if (s.wait > 0) s.wait -= dt; else s.r = Math.min(4.6, s.r + s.grow * dt);
+        if (s.r > 0.4) { ctx.fillStyle = 'rgba(150,175,210,.7)'; ctx.fillRect(s.x - 0.8, gb - 1, 1.6, s.r * 0.6 + 1); drop(s.x, gb + s.r * 1.05, s.r, 1.1); }
+        if (s.r >= 4.6) { s.fall = true; s.y = gb + s.r; s.vy = 30; }
       }
     }
     for (var j = rings.length - 1; j >= 0; j--) { var g = rings[j]; g.life += dt; if (g.life > 0.6) { rings.splice(j, 1); continue; }
@@ -811,7 +853,7 @@ document.querySelectorAll('.eave').forEach(function(el, idx){
    Estimate form → pre-filled text message
    ========================================================= */
 (function(){
-  var f = document.getElementById('estimate-form'), NUMBER = '+15199992445', after = f.querySelector('.after');
+  var f = document.getElementById('estimate-form'), NUMBER = '+15199992445';
   document.querySelectorAll('[data-need]').forEach(function(a){
     a.addEventListener('click', function(){ var r = f.querySelector('input[name=need][value="' + a.dataset.need + '"]'); if (r) r.checked = true; });
   });
@@ -840,7 +882,6 @@ document.querySelectorAll('.eave').forEach(function(el, idx){
       'Need: ' + need + (notes ? '\nNotes: ' + notes : '');
     var a = document.createElement('a'); a.href = 'sms:' + NUMBER + '?&body=' + encodeURIComponent(body);
     document.body.appendChild(a); a.click(); a.remove();
-    after.hidden = false;
   });
 })();
 </script>
