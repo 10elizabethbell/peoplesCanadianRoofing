@@ -60,9 +60,10 @@ ul,ol{margin:0;padding:0;list-style:none}
 .top{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px var(--gutter);padding-top:max(12px,env(safe-area-inset-top))}
 .brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--cream);min-height:44px}
 .brand .leaf{width:32px;height:32px}
-.brand-name{display:flex;flex-direction:column;font-style:italic;font-weight:900;line-height:1.02;text-transform:uppercase}
-.brand-name span:first-child{font-size:13px;letter-spacing:.02em}
-.brand-name span:last-child{font-size:16px;letter-spacing:.16em;color:var(--gold)}
+.brand-name{display:flex;flex-direction:column;align-items:center;font-weight:900;line-height:1.04;text-transform:uppercase}
+.brand-name span:first-child{font-size:13px;letter-spacing:.01em}
+.brand-name span:last-child{display:flex;align-items:center;gap:6px;font-size:16px;letter-spacing:.06em;color:var(--gold)}
+.brand-name span:last-child::before,.brand-name span:last-child::after{content:"";width:16px;height:3px;border-radius:2px;background:var(--gold)}
 .tel-top{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 2px;color:var(--cream);font-weight:800;font-size:16px;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
 .tel-top svg{color:var(--gold)}
 .tel-top:hover{color:var(--gold)}
@@ -110,15 +111,14 @@ ul,ol{margin:0;padding:0;list-style:none}
 .step .n{grid-row:span 2;font-size:52px;font-weight:900;line-height:.9;color:var(--gold);font-variant-numeric:tabular-nums}
 .step h3{font-size:22px;line-height:1.15;margin-bottom:6px;padding-top:4px}
 .step p{color:var(--cream-2);max-width:42ch}
-.area{margin-top:56px;padding-top:34px;border-top:1px solid rgba(245,241,232,.16)}
-.area .big{font-size:clamp(26px,7vw,40px);font-weight:900;line-height:1.1;max-width:22ch}
-.towns{margin-top:14px;color:var(--cream-2);font-size:16px;line-height:1.7;max-width:60ch}
+.area{margin-bottom:32px}
+.area .big{font-size:clamp(20px,5.4vw,26px);font-weight:800;line-height:1.25;max-width:24ch}
+.towns{margin-top:10px;color:var(--ink-2);font-size:16px;line-height:1.7;max-width:46ch}
 
 /* ---------- estimate form (paper) ---------- */
 .estimate{padding:96px 0 80px;background:var(--paper)}
-.estimate h2{margin-bottom:28px}
+.estimate h2{margin-bottom:20px}
 form{max-width:640px}
-.after a{display:inline-flex;align-items:center;min-height:44px}
 form{display:grid;gap:20px}
 .field{display:grid;gap:7px}
 .field label,.legend{font-weight:800;font-size:16px}
@@ -129,7 +129,8 @@ input::placeholder,textarea::placeholder{color:#6a7387}
 input[type=text]:hover,input[type=tel]:hover,textarea:hover,
 input[type=text]:focus,input[type=tel]:focus,textarea:focus{outline:2px solid var(--red);outline-offset:2px;border-color:var(--red)}
 fieldset{border:0;margin:0;padding:0;display:grid;gap:9px}
-.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips{display:grid;gap:10px}
+@media (min-width:520px){.chips{display:flex;flex-wrap:wrap}}
 .chip{position:relative}
 .chip input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
 .chip span{display:flex;align-items:center;min-height:50px;padding:0 18px;border:2px solid rgba(19,33,61,.24);border-radius:10px;background:#fff;font-weight:700;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s}
@@ -142,7 +143,6 @@ fieldset{border:0;margin:0;padding:0;display:grid;gap:9px}
 .send .btn-primary{border-color:#d7a307;box-shadow:none}
 .send .btn-primary:hover,.send .btn-primary:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 .note{font-size:15px;color:var(--ink-2)}
-.after{font-size:16px;font-weight:700}
 
 /* ---------- close (red) ---------- */
 .close{background:var(--red);color:#fff;padding:72px 0 76px;text-align:center}
@@ -166,6 +166,7 @@ footer a{color:var(--cream);font-weight:700;display:inline-flex;align-items:cent
   .brand .leaf{width:40px;height:40px}
   .brand-name span:first-child{font-size:16px}
   .brand-name span:last-child{font-size:20px}
+  .brand-name span:last-child::before,.brand-name span:last-child::after{width:22px}
   .tel-top{font-size:19px}
   .hero-copy{padding-top:40px}
   .actions{grid-auto-flow:column;justify-content:start}
@@ -185,7 +186,8 @@ footer a{color:var(--cream);font-weight:700;display:inline-flex;align-items:cent
   .services .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:start}
   .services h2{grid-column:1/-1;margin-bottom:6px}
   .care{margin-top:0}
-  .area{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+  .estimate .wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+  .area{margin-top:36px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -193,7 +195,7 @@ footer a{color:var(--cream);font-weight:700;display:inline-flex;align-items:cent
 <body>
 <!--
 THESIS: The roof is the hero. A visitor in Windsor sees an old, mossy, curled roof getting rained on, and lays new shingles across it with a finger. The page refuses the category default (stock house photo, blue "Get a Quote" banner, icon-card services grid).
-OWN-WORLD: Fall storm at dusk over Essex County. Navy storm sky, flag red, flyer gold, warm paper. Shingle courses with granule texture, white aluminum eavestroughs, rain, red/orange maple leaves. Heavy uppercase system type, italic wordmark like the flyer.
+OWN-WORLD: Fall storm at dusk over Essex County. Navy storm sky with cloud masses and last light behind the ridge, flag red, flyer gold, cool flag-white paper (the flyer's flag). Shingle courses with granule texture, white aluminum eavestroughs, rain, red/orange maple leaves. Heavy uppercase system type; upright wordmark with gold bars either side of ROOFING, like the flyer.
 STORY: They understand it's a local Windsor roofer for repairs, leaks and replacements; they believe it because it's licensed, insured, locally owned and the estimate is free; they text a photo or send the estimate form, or tap the number.
 FIRST VIEWPORT (phone): wordmark left, 519-999-2445 top right; "KEEP THE WEATHER OUT." huge; promise line; gold "Get a free estimate" + outlined "Text us a photo"; drag hint; the live roof fills the rest down to a dripping gutter.
 FORM: grounded candidate 1 of 7 (shingle roof in a fall storm), chosen over seed f5fdb490's assigned #7 by the pitch-site rule; runner-up: the flyer's waving flag.
@@ -248,7 +250,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <ul class="facts">
           <li><svg class="leaf" viewBox="0 0 100 100" aria-hidden="true"><use href="#maple" fill="#d52b1e"/></svg>Licensed &amp; insured</li>
           <li><svg class="leaf" viewBox="0 0 100 100" aria-hidden="true"><use href="#maple" fill="#d52b1e"/></svg>Free estimates</li>
-          <li><svg class="leaf" viewBox="0 0 100 100" aria-hidden="true"><use href="#maple" fill="#d52b1e"/></svg>Locally owned in Windsor, Ontario</li>
         </ul>
       </div>
     </div>
@@ -262,17 +263,19 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <li class="step"><span class="n">2</span><h3>Free estimate</h3><p>We look at your roof and tell you straight what it needs and what it will cost.</p></li>
         <li class="step"><span class="n">3</span><h3>We do the work</h3><p>Repaired or replaced, so you can stop watching the ceiling every time it rains.</p></li>
       </ol>
-      <div class="area">
-        <h3 class="big">We work across Windsor-Essex County &amp; Chatham-Kent.</h3>
-        <p class="towns">Windsor · LaSalle · Tecumseh · Lakeshore · Amherstburg · Essex · Kingsville · Leamington · Chatham · Wallaceburg · Tilbury</p>
-      </div>
     </div>
-    <div class="eave" data-courses="2" aria-hidden="true" style="margin-top:52px"><canvas></canvas></div>
+    <div class="eave" data-courses="2" aria-hidden="true" style="margin-top:64px"><canvas></canvas></div>
   </section>
 
   <section class="estimate" id="estimate" aria-labelledby="est">
     <div class="wrap">
-      <h2 id="est">Get a free estimate</h2>
+      <div class="est-side">
+        <h2 id="est">Get a free estimate</h2>
+        <div class="area">
+          <h3 class="big">We work across Windsor‑Essex County &amp; Chatham-Kent.</h3>
+          <p class="towns">Windsor · LaSalle · Tecumseh · Lakeshore · Amherstburg · Essex · Kingsville · Leamington · Chatham · Wallaceburg · Tilbury</p>
+        </div>
+      </div>
       <form id="estimate-form" novalidate>
         <div class="field">
           <label for="f-name">Your name</label>
@@ -304,7 +307,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <div class="send">
           <button class="btn btn-primary" type="submit">Text my estimate request</button>
           <p class="note">Opens your messages app with this filled in. Nothing is sent until you press send.</p>
-          <p class="after">Prefer to talk? Call us at <a href="tel:+15199992445">519-999-2445</a>.</p>
         </div>
       </form>
     </div>
@@ -315,7 +317,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <svg class="leaf" viewBox="0 0 100 100" aria-hidden="true"><use href="#maple" fill="#fff"/></svg>
       <h2 id="close">Fix it before the next storm.</h2>
       <a class="tel-big" href="tel:+15199992445">519-999-2445</a>
-      <p>Locally owned in Windsor, Ontario</p>
     </div>
   </section>
 </main>
@@ -466,12 +467,16 @@ var Shingles = (function(){
     g.addColorStop(0, isNew ? 'rgba(3,7,16,.62)' : 'rgba(12,12,8,.42)'); g.addColorStop(1, 'rgba(0,0,0,0)');
     x.fillStyle = g; x.fillRect(x0, y, w, h * 0.42);
     if (!isNew && t.moss) {
-      var mx = x0 + w * (0.15 + t.mossX * 0.7), my = y + h - 2, s = Math.max(3, h * 0.16);
-      x.fillStyle = 'hsl(80 30% 27%)';
-      x.beginPath(); x.ellipse(mx, my, s * 1.6, s, 0, 0, 6.3); x.fill();
-      x.beginPath(); x.ellipse(mx + s * 1.3, my - s * 0.3, s, s * 0.7, 0, 0, 6.3); x.fill();
-      x.fillStyle = 'hsl(76 34% 40%)';
-      x.beginPath(); x.ellipse(mx - s * 0.3, my - s * 0.35, s * 0.7, s * 0.45, 0, 0, 6.3); x.fill();
+      // moss creeps up from the butt edge in uneven clumps, with lichen specks around it
+      var mr = rng(Math.floor(t.v * 1e6) + 3), mx = x0 + w * (0.1 + t.mossX * 0.75), my = y + h - 1.5, s = Math.max(2.2, h * 0.11);
+      var shades = ['hsl(82 28% 22%)', 'hsl(78 30% 29%)', 'hsl(72 34% 37%)'];
+      for (var q = 0, n = 7 + Math.floor(mr() * 9); q < n; q++) {
+        var a = mr() * Math.PI, d = mr() * s * 2.6;
+        x.fillStyle = shades[Math.floor(mr() * 3)];
+        x.beginPath(); x.ellipse(mx + Math.cos(a) * d * 1.5 - s, my - Math.sin(a) * d * 0.8, s * (0.35 + mr() * 0.7), s * (0.25 + mr() * 0.5), mr() * 3, 0, 6.3); x.fill();
+      }
+      x.fillStyle = 'hsla(70 25% 62% / .5)';
+      for (var q2 = 0; q2 < 6; q2++) x.fillRect(mx + (mr() - 0.5) * s * 7, my - mr() * s * 3, 1.2, 1.2);
     }
     x.fillStyle = isNew ? 'rgba(255,255,255,.09)' : 'rgba(255,255,255,.15)'; x.fillRect(x0, y + h - 3, w, 1);
     x.fillStyle = 'rgba(4,8,16,.62)'; x.fillRect(x0, y + h - 1.6, w, 1.6);
@@ -543,7 +548,7 @@ var Leaves = (function(){
   var hero = document.querySelector('.hero'), cv = hero.querySelector('.hero-canvas'), roofEl = hero.querySelector('.roof');
   var copyEl = hero.querySelector('.hero-copy'), topEl = hero.querySelector('.top'), hint = hero.querySelector('.hint'), hintText = hint.querySelector('.hint-text');
   var ctx = cv.getContext('2d');
-  var W = 0, H = 0, dpr = 1, roofTop = 0, roofBottom = 0, OY = 0, tabs = [], rows = [], oldL, newL, comp, compX, chimney = null;
+  var W = 0, H = 0, dpr = 1, roofTop = 0, roofBottom = 0, OY = 0, tabs = [], rows = [], oldL, newL, comp, compX, chimney = null, sky = null;
   var rain = [], splashes = [], wets = [], leaves = [], sprites = Leaves.sprites();
   var lastUser = -1e9, auto = { phase: 'lay', row: 0, x: 0, until: 0, acc: 0 }, brushR = 40, now = 0;
   var drag = { on: false, mouse: false, cx: 0, cy: 0, lx: null, ly: null };
@@ -561,6 +566,7 @@ var Leaves = (function(){
     newL = Shingles.paintLayer(W, roofBottom, dpr, tabs, true, roofTop, roofBottom, OY);
     comp = document.createElement('canvas'); comp.width = oldL.width; comp.height = oldL.height; compX = comp.getContext('2d');
     chimney = W >= 1024 ? makeChimney() : null;
+    sky = makeSky();
     compX.drawImage(oldL, 0, 0);
     brushR = isPhone() ? TUNE.BRUSH_PHONE : TUNE.BRUSH_DESKTOP;
     auto = { phase: 'lay', row: 0, x: 0, until: 0, acc: 0 };
@@ -591,6 +597,30 @@ var Leaves = (function(){
     g = x.createLinearGradient(0, h - 12, 0, h); g.addColorStop(0, '#8e949c'); g.addColorStop(1, '#5c626b'); x.fillStyle = g; x.fillRect(-4, h - 12, w + 8, 12);
     x.fillStyle = 'rgba(4,8,16,.55)'; x.fillRect(-4, h, w + 8, 2);
     return { c: c, x: x0, y: y0 - 2 };
+  }
+  // storm sky: soft cloud masses drifting with the wind (drawn at half size, they're soft anyway), last light behind the ridge
+  function makeSky(){
+    var k = 0.5, cw = Math.ceil(W * 2 * k), ch = Math.ceil(roofTop * k), c = document.createElement('canvas'); c.width = cw; c.height = Math.max(1, ch);
+    var x = c.getContext('2d'), r = rng(23), n = Math.round(W / 26);
+    for (var i = 0; i < n; i++) {
+      var bx = r() * cw, by = ch * (0.08 + r() * 0.85), rx = (40 + r() * 120) * k * (isPhone() ? 0.8 : 1.2), ry = rx * (0.35 + r() * 0.25);
+      var light = r() < 0.55, a = light ? 0.10 + r() * 0.12 : 0.18 + r() * 0.2;
+      for (var o = -cw; o <= cw; o += cw) {
+        var g = x.createRadialGradient(bx + o, by, 0, bx + o, by, rx);
+        g.addColorStop(0, light ? 'rgba(92,118,165,' + a + ')' : 'rgba(6,13,30,' + a + ')'); g.addColorStop(1, 'rgba(0,0,0,0)');
+        x.fillStyle = g; x.save(); x.translate(bx + o, by); x.scale(1, ry / rx); x.translate(-(bx + o), -by);
+        x.beginPath(); x.arc(bx + o, by, rx, 0, 6.3); x.fill(); x.restore();
+      }
+    }
+    return { c: c, w: W * 2, h: roofTop };
+  }
+  function drawSky(s){
+    if (!sky) return;
+    var off = (s * 7) % sky.w;
+    ctx.drawImage(sky.c, -off, 0, sky.w, sky.h); ctx.drawImage(sky.c, sky.w - off, 0, sky.w, sky.h);
+    var g = ctx.createLinearGradient(0, roofTop - 110, 0, roofTop);
+    g.addColorStop(0, 'rgba(150,140,160,0)'); g.addColorStop(1, 'rgba(196,166,150,.22)');
+    ctx.fillStyle = g; ctx.fillRect(0, roofTop - 110, W, 110);
   }
   function blit(src, t, dy, alpha){
     var sx = Math.max(0, t.x), ex = Math.min(W, t.x + t.w); if (ex <= sx) return;
@@ -711,6 +741,7 @@ var Leaves = (function(){
     }
 
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); drawSky(s); ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.drawImage(comp, 0, Math.round(OY * dpr));
     if (chimney) ctx.drawImage(chimney.c, Math.round(chimney.x * dpr), Math.round(chimney.y * dpr));
 
@@ -741,7 +772,7 @@ var Leaves = (function(){
         if (z) { var h = l.s * 0.5, up = l.y - z[1] + h, dn = z[3] - l.y + h, lf = l.x - z[0] + h, rt2 = z[2] - l.x + h, m = Math.min(up, dn, lf, rt2);
           if (m === up) { l.y = z[1] - h; l.vy = Math.min(l.vy, -20); } else if (m === dn) { l.y = z[3] + h; l.vy = Math.max(l.vy, 20); }
           else if (m === lf) { l.x = z[0] - h; l.vx = Math.min(l.vx, -10); l.vy += 60; } else { l.x = z[2] + h; l.vx = Math.max(l.vx, 30); } }
-        if (l.y >= l.landY && l.vy > 0 && l.x > 0 && l.x < W) { l.rest = true; l.y = l.landY; l.restUntil = s + 3 + Math.random() * 7; l.vx = l.vy = 0; }
+        if (l.y >= l.landY && l.vy > 0 && l.x > 0 && l.x < W && !(chimney && l.x > chimney.x - 10 && l.x < chimney.x + 90)) { l.rest = true; l.y = l.landY; l.restUntil = s + 3 + Math.random() * 7; l.vx = l.vy = 0; }
         if (l.x > W + 50 || l.y > H + 50 || l.y < -80) newLeaf(l, false);
       }
       var dx = l.x - lp.x, dy = l.y - lp.y, d2 = Math.hypot(dx, dy);
@@ -751,12 +782,14 @@ var Leaves = (function(){
 
     // rain (thin, and faded right out where the words are)
     ctx.lineWidth = 1.1; ctx.lineCap = 'round';
-    var slant = TUNE.WIND / 900 * 3.2;
+    // the rain comes in gusts: heavier and more slanted, then easing off
+    var gust = 0.5 + 0.5 * Math.sin(s * 0.37) * Math.sin(s * 0.13 + 1), gustA = 0.6 + 0.7 * gust;
+    var slant = TUNE.WIND / 900 * (2.4 + 2.6 * gust);
     for (var ri = 0; ri < rain.length; ri++) { var dr = rain[ri];
       dr.y += dr.vy * dt; dr.x += dr.vy * slant * dt * 0.25;
       if (dr.y >= dr.land) { if (dr.land < H) land(dr); newDrop(dr, false); continue; }
       if (inZone(Z, dr.x, dr.y) || inZone(Z, dr.x, dr.y - dr.len)) continue;
-      var al = dr.y > roofTop ? 0.5 : 0.32;
+      var al = (dr.y > roofTop ? 0.5 : 0.32) * gustA;
       ctx.strokeStyle = 'rgba(205,220,242,' + al + ')';
       ctx.beginPath(); ctx.moveTo(dr.x, dr.y); ctx.lineTo(dr.x - dr.len * slant * 0.25, dr.y - dr.len); ctx.stroke();
     }
@@ -778,7 +811,8 @@ var Leaves = (function(){
   function still(){
     // reduced motion: a finished new roof with a few leaves on it, drawn once
     for (var i = 0; i < tabs.length; i++) tabs[i].state = 1;
-    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(newL, 0, Math.round(OY * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H); drawSky(0);
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(newL, 0, Math.round(OY * dpr));
     if (chimney) ctx.drawImage(chimney.c, Math.round(chimney.x * dpr), Math.round(chimney.y * dpr));
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     leaves.forEach(function(l){ l.y = l.landY; drawLeaf(l, 0, true); });
@@ -812,25 +846,33 @@ document.querySelectorAll('.eave').forEach(function(el, idx){
       L.tabs.forEach(function(t){ t.state = 1; });
       b.drawImage(Shingles.paintLayer(W, H, dpr, L.tabs, true, 0, gy), 0, 0);
     }
-    b.setTransform(dpr, 0, 0, dpr, 0, 0); Shingles.gutter(b, W, gy);
+    b.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (courses) { var lg = b.createLinearGradient(0, 0, 0, gy); lg.addColorStop(0, 'rgba(150,175,215,.30)'); lg.addColorStop(1, 'rgba(150,175,215,.08)'); b.fillStyle = lg; b.fillRect(0, 0, W, gy); }
+    Shingles.gutter(b, W, gy);
     sites = []; var r = rng(77 + idx), x = 20 + r() * 40;
     while (x < W - 10) { sites.push({ x: x, r: r() * 3, grow: 0.9 + r() * 1.6, fall: false, y: 0, vy: 0, wait: r() * 2, splashY: gb + 40 + r() * 34 }); x += TUNE.DRIP_SPACING[0] + r() * (TUNE.DRIP_SPACING[1] - TUNE.DRIP_SPACING[0]); }
     el.classList.add('ready');
     draw(0);
     return true;
   }
+  // a drop of water: a teardrop, clear in the middle, the light pooling at its lower edge
   function drop(x, y, r, stretch){
-    ctx.fillStyle = 'rgba(175,198,228,.6)'; ctx.strokeStyle = 'rgba(19,37,74,.35)'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.ellipse(x, y, r, r * stretch, 0, 0, 6.3); ctx.fill(); ctx.stroke();
+    var g = ctx.createRadialGradient(x - r * 0.25, y - r * 0.2, r * 0.1, x, y, r * 1.25);
+    g.addColorStop(0, 'rgba(235,242,250,.35)'); g.addColorStop(0.65, 'rgba(165,190,222,.55)'); g.addColorStop(1, 'rgba(95,125,165,.75)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(x, y - r * 1.9 * stretch);
+    ctx.bezierCurveTo(x + r * 0.3, y - r * 1.1 * stretch, x + r, y - r * 0.45, x + r, y);
+    ctx.arc(x, y, r, 0, Math.PI);
+    ctx.bezierCurveTo(x - r, y - r * 0.45, x - r * 0.3, y - r * 1.1 * stretch, x, y - r * 1.9 * stretch);
+    ctx.fill();
   }
   function draw(dt){
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(base, 0, 0);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     for (var i = 0; i < sites.length; i++) { var s = sites[i];
-      if (s.fall) { s.vy += 1500 * dt; s.y += s.vy * dt; if (s.y >= s.splashY) { rings.push({ x: s.x, y: s.splashY, life: 0 }); s.fall = false; s.r = 0; s.wait = 0.3 + Math.random() * 2.4; } else drop(s.x, s.y, s.r * 0.8, 1.7); }
+      if (s.fall) { s.vy += 1500 * dt; s.y += s.vy * dt; if (s.y >= s.splashY) { rings.push({ x: s.x, y: s.splashY, life: 0 }); s.fall = false; s.r = 0; s.wait = 0.3 + Math.random() * 2.4; } else drop(s.x, s.y, s.r * 0.8, 1.3); }
       if (!s.fall) {
         if (s.wait > 0) s.wait -= dt; else s.r = Math.min(4.6, s.r + s.grow * dt);
-        if (s.r > 0.4) { ctx.fillStyle = 'rgba(150,175,210,.7)'; ctx.fillRect(s.x - 0.8, gb - 1, 1.6, s.r * 0.6 + 1); drop(s.x, gb + s.r * 1.05, s.r, 1.1); }
+        if (s.r > 0.4) drop(s.x, gb + s.r * 1.05, s.r, 0.6 + s.r * 0.12);
         if (s.r >= 4.6) { s.fall = true; s.y = gb + s.r; s.vy = 30; }
       }
     }
